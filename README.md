@@ -88,7 +88,27 @@ npm run postgres
 npm run ceramic-one
 ```
 
-8. Go through the steps outlined in the [Access Ceramic Mainnet](https://developers.ceramic.network/docs/composedb/guides/composedb-server/access-mainnet) docs (skip over step 1). When asked to register your DID in step 3, copy-paste your node DID (found in node_did.txt).
+8. Verify your email address and register your node did (found in node_did.txt) so your js-Ceramic process can access the anchor service:
+
+```bash
+# a. Verifying email address
+curl --request POST \
+  --url https://cas.3boxlabs.com/api/v0/auth/verification \
+  --header 'Content-Type: application/json' \
+  --data '{"email": "youremailaddress"}'
+
+# b. Registering your node DID
+curl --request POST \
+  --url https://cas.3boxlabs.com/api/v0/auth/did \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "email": "youremailaddress",
+	  "otp": "youronetimepasscode",
+	  "dids": [
+		  "yourdid"
+	  ]
+  }'
+```
 
 9. Finally, you can start your js-Ceramic process:
 
