@@ -1,0 +1,10 @@
+.next
+node_modules/*
+package.lock
+
+
+admin_seed.txt
+node_did.txt
+daemon.config.json
+
+.ceramic/
